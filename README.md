@@ -1,7 +1,3 @@
-# Airline-Resveration-system
-
-
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -14,7 +10,7 @@ struct Flight
     string flightNumber;
     string destination;
     string departureTime;
-    int duration;
+    string duration;
     float price;
 };
 
@@ -49,15 +45,15 @@ void inputCustomerDetails(Customer& customer)
 
 void displayFlights(const Flight flights[], int flightCount) 
 {
-    cout << left << setw(10) << "Flight No" << setw(15) << "Destination"
-        << setw(15) << "Departure" << setw(10) << "Duration"
+    cout << left << setw(10) << "Flight No" << setw(15) << "  Destination"
+        << setw(20) << "   Departure" << setw(10) << "Duration\t" 
         << "Price" << endl;
     for (int i = 0; i < flightCount; ++i)
 	 {
         cout << left << setw(10) << flights[i].flightNumber
             << setw(15) << flights[i].destination
-            << setw(15) << flights[i].departureTime
-            << setw(10) << flights[i].duration << "hrs"
+            << setw(20) << flights[i].departureTime
+             << flights[i].duration << setw(10)<< " hours"
             << "Rs." << flights[i].price << endl;
     }
 }
@@ -74,7 +70,7 @@ void printTicket(int ticketId, const Customer& customer, const Flight& flight)
         outf << "Flight Number: " << flight.flightNumber << endl;
         outf << "Destination: " << flight.destination << endl;
         outf << "Departure Time: " << flight.departureTime << endl;
-        outf << "Duration: " << flight.duration << " hrs" << endl;
+        outf << "Duration: " << flight.duration << " hours" << endl;
         outf << "Price: Rs. " << flight.price << endl;
     }
     outf.close();
@@ -84,24 +80,24 @@ void printTicket(int ticketId, const Customer& customer, const Flight& flight)
 void displayTicket(int ticketId, const Customer& customer, const Flight& flight) 
 {
     cout << "************* Airline Ticket *************\n";
-    cout << "Ticket ID: " << ticketId << endl;
-    cout << "Customer Name: " << customer.name << endl;
-    cout << "Customer Gender: " << customer.gender << endl;
-    cout << "Flight Number: " << flight.flightNumber << endl;
-    cout << "Destination: " << flight.destination << endl;
-    cout << "Departure Time: " << flight.departureTime << endl;
-    cout << "Duration: " << flight.duration << " hrs" << endl;
-    cout << "Price: Rs. " << flight.price << endl;
+    cout << "Ticket ID: "        << ticketId << endl;
+    cout << "Customer Name: "    << customer.name << endl;
+    cout << "Customer Gender: "  << customer.gender << endl;
+    cout << "Flight Number: "    << flight.flightNumber << endl;
+    cout << "Destination: "      << flight.destination << endl;
+    cout << "Departure Time: "   << flight.departureTime << endl;
+    cout << "Duration: "         << flight.duration << " hours" << endl;
+    cout << "Price: Rs. "        << flight.price << endl;
 }
 
 void getFlights(Flight flights[], int& flightCount)
  {
-    flights[0] = { "DUB-498", "Dubai", "08-12-2024 7:40PM", 4, 14000 };
-    flights[1] = { "CA-198", "Canada", "22-01-2024 5:40AM", 16, 34000 };
-    flights[2] = { "UK-798", "UK", "09-12-2024 7:40PM", 14, 44000 };
-    flights[3] = { "US-578", "USA", "25-02-2024 5:40AM", 18, 94000 };
-    flights[4] = { "AS-898", "Australia", "22-01-2024 5:40AM", 16, 64000 };
-    flights[5] = { "EU-348", "Europe", "22-01-2024 5:40AM", 7, 78000 };
+    flights[0] = { "DUB-498", "   Dubai",     "08-12-2024 7:40PM", "04",  14000 };
+    flights[1] = { "CA-198",  "   Canada",    "22-01-2024 5:40AM", "16", 34000 };
+    flights[2] = { "UK-798",  "   UK",        "09-12-2024 7:40PM", "14", 44000 };
+    flights[3] = { "US-578",  "   USA",       "25-02-2024 5:40AM", "18", 94000 };
+    flights[4] = { "AS-898",  "   Australia", "22-01-2024 5:40AM", "16", 64000 };
+    flights[5] = { "EU-348",  "   Europe",    "22-01-2024 5:40AM", "07",  78000 };
     flightCount = 6;
 }
 
@@ -172,7 +168,7 @@ void mainMenu()
         case 4:
             if (flightBooked)
 			 {
-                printTicket(ticketId - 1, customer, selectedFlight);
+                printTicket(ticketId-1, customer, selectedFlight);
             }
             else 
 			{
@@ -190,6 +186,14 @@ void mainMenu()
 
 int main()
  {
+ 	  // Change background to green and text to black
+    system("color 3F"); // Format: "color BG", where B = Background, G = Text
+    
+    cout << "The background is green, and the text is black!" << endl;
+
     mainMenu();
+   
+
+  
     return 0;
 }
