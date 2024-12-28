@@ -58,13 +58,13 @@ void displayFlights(const Flight flights[], int flightCount)
     }
 }
 
-void printTicket(int ticketId, const Customer& customer, const Flight& flight) 
+void printTicket(int coustomerId, const Customer& customer, const Flight& flight) 
 {
     ofstream outf("ticket.txt");
     if (outf.is_open())
 	 {
-        outf << "************* Airline Ticket *************\n";
-        outf << "Ticket ID: " << ticketId << endl;
+        outf << "____________ Airline Ticket ____________\n";
+        outf << "Customer ID: " << customer.customerId << endl;
         outf << "Customer Name: " << customer.name << endl;
         outf << "Customer Gender: " << customer.gender << endl;
         outf << "Flight Number: " << flight.flightNumber << endl;
@@ -77,13 +77,13 @@ void printTicket(int ticketId, const Customer& customer, const Flight& flight)
     cout << "Ticket has been printed! Check 'ticket.txt'.\n";
 }
 
-void displayTicket(int ticketId, const Customer& customer, const Flight& flight) 
+void displayTicket(int coustomerId, const Customer& customer, const Flight& flight) 
 {
-    cout << "************* Airline Ticket *************\n";
-    cout << "Ticket ID: "        << ticketId << endl;
+    cout << "____________ Airline Ticket ____________\n";
+    cout << "Customer ID: "      << customer.customerId << endl;
     cout << "Customer Name: "    << customer.name << endl;
     cout << "Customer Gender: "  << customer.gender << endl;
-    cout << "Flight Number: "    << flight.flightNumber << endl;
+    cout << "Flight Number: "   << flight.flightNumber << endl;
     cout << "Destination: "      << flight.destination << endl;
     cout << "Departure Time: "   << flight.departureTime << endl;
     cout << "Duration: "         << flight.duration << " hours" << endl;
@@ -111,10 +111,12 @@ void mainMenu()
     Flight selectedFlight;
     bool flightBooked = false;
 
-    while (true) {
+    while (true) 
+	{
+    	
         cout << "\t                 XYZ Airlines \n" << endl;
-        cout << "\t__Main Menu" << endl;
-        cout << "\t _____________________________________________" << endl;
+        cout << "\t                  Main Menu" << endl;
+        cout << "\t  ____________________________________________" << endl;
         cout << "\t |\t\t\t\t\t      |" << endl;
         cout << "\t |\t 1. Add Customer Details              |" << endl;
         cout << "\t |\t 2. View Available Flights            |" << endl;
@@ -122,7 +124,7 @@ void mainMenu()
         cout << "\t |\t 4. Print Ticket                      |" << endl;
         cout << "\t |\t 5. Exit                              |" << endl;
         cout << "\t |\t\t\t\t\t      |" << endl;
-        cout << "\t _____________________________________________" << endl;
+        cout << "\t |____________________________________________|\n" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -133,7 +135,7 @@ void mainMenu()
             inputCustomerDetails(customer);
             break;
         case 2:
-            cout << "\nAvailable Flights:\n";
+            cout << "\nAvailable Flights:\n\n";
             displayFlights(flights, flightCount);
             break;
         case 3:
@@ -186,10 +188,10 @@ void mainMenu()
 
 int main()
  {
- 	  // Change background to green and text to black
-    system("color 3F"); // Format: "color BG", where B = Background, G = Text
+ 	  
+//    system("color F3"); 
     
-    cout << "The background is green, and the text is black!" << endl;
+    
 
     mainMenu();
    
